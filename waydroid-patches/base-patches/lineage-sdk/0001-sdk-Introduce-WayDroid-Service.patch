@@ -1,4 +1,4 @@
-From fb42f3c5d213ae89066f14466e564e6f5be9ad20 Mon Sep 17 00:00:00 2001
+From 47ad9523ba22909044870d3a4de946ab487915aa Mon Sep 17 00:00:00 2001
 From: Erfan Abdi <erfangplus@gmail.com>
 Date: Fri, 30 Jul 2021 23:27:33 +0430
 Subject: [PATCH] sdk: Introduce WayDroid Service
@@ -33,10 +33,10 @@ Subject: [PATCH] sdk: Introduce WayDroid Service
  create mode 100644 sdk/src/java/lineageos/waydroid/UserMonitor.java
 
 diff --git a/Android.mk b/Android.mk
-index b813d480..f54137fa 100644
+index 4d2074e4..2e451cd5 100644
 --- a/Android.mk
 +++ b/Android.mk
-@@ -25,7 +25,7 @@ LOCAL_PATH := $(call my-dir)
+@@ -27,7 +27,7 @@ include $(CLEAR_VARS)
  lineage_platform_res := APPS/org.lineageos.platform-res_intermediates/aapt
  
  # List of packages used in lineage-api-stubs
@@ -46,10 +46,10 @@ index b813d480..f54137fa 100644
  lineage_framework_module := $(LOCAL_INSTALLED_MODULE)
  
 diff --git a/api/lineage_current.txt b/api/lineage_current.txt
-index 13e70b33..be53932f 100644
+index 60a92746..f035a1c9 100644
 --- a/api/lineage_current.txt
 +++ b/api/lineage_current.txt
-@@ -1176,3 +1176,60 @@ package lineageos.weatherservice {
+@@ -1181,3 +1181,60 @@ package lineageos.weatherservice {
  
  }
  
@@ -112,7 +112,7 @@ index 13e70b33..be53932f 100644
 +}
 diff --git a/lineage/lib/main/java/org/lineageos/platform/internal/WayDroidService.java b/lineage/lib/main/java/org/lineageos/platform/internal/WayDroidService.java
 new file mode 100644
-index 00000000..755889d3
+index 00000000..ff5b33a5
 --- /dev/null
 +++ b/lineage/lib/main/java/org/lineageos/platform/internal/WayDroidService.java
 @@ -0,0 +1,442 @@
@@ -559,24 +559,24 @@ index 00000000..755889d3
 +    };
 +}
 diff --git a/lineage/res/res/values/config.xml b/lineage/res/res/values/config.xml
-index 0d950f36..f8b355e4 100644
+index bfd4ba70..c64d2eca 100644
 --- a/lineage/res/res/values/config.xml
 +++ b/lineage/res/res/values/config.xml
-@@ -107,6 +107,7 @@
-         <item>org.lineageos.platform.internal.LineageAudioService</item>
+@@ -109,6 +109,7 @@
          <item>org.lineageos.platform.internal.TrustInterfaceService</item>
          <item>org.lineageos.platform.internal.LineageSettingsService</item>
-+		<item>org.lineageos.platform.internal.WayDroidService</item>
+         <item>org.lineageos.platform.internal.LineageGlobalActionsService</item>
++        <item>org.lineageos.platform.internal.WayDroidService</item>
      </string-array>
  
      <!-- The LineageSystemServer class that is invoked from Android's SystemServer -->
 diff --git a/sdk/src/java/lineageos/app/LineageContextConstants.java b/sdk/src/java/lineageos/app/LineageContextConstants.java
-index 0b435b4d..a3b1e796 100644
+index cd5ffd30..c0deeefd 100644
 --- a/sdk/src/java/lineageos/app/LineageContextConstants.java
 +++ b/sdk/src/java/lineageos/app/LineageContextConstants.java
-@@ -107,6 +107,34 @@ public final class LineageContextConstants {
+@@ -115,6 +115,34 @@ public final class LineageContextConstants {
       */
-     public static final String LINEAGE_TRUST_INTERFACE = "lineagetrust";
+     public static final String LINEAGE_GLOBAL_ACTIONS_SERVICE = "lineageglobalactions";
  
 +    /**
 +     * Manages waydroid platform
@@ -1408,5 +1408,5 @@ index 00000000..96425a38
 +    }
 +}
 -- 
-2.29.2
+2.35.1
 
